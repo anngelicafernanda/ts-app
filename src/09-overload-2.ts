@@ -6,23 +6,39 @@
 
 export function parseStr(input: string): string[];
 export function parseStr(input: string[]): string;
+export function parseStr(input: number): boolean;
 
-export function parseStr(input: string | string[]): string | string[] {
+// export function parseStr(input: string | string[]): string | string[] {
+//   if (Array.isArray(input)) {
+//     return input.join(''); //string
+//   } else {
+//     return input.split(''); //string
+//   }
+// }
+export function parseStr(input: unknown): unknown {
   if (Array.isArray(input)) {
     return input.join(''); //string
-  } else {
+  } else if (typeof input === 'string') {
     return input.split(''); //string
+  } else if (typeof input === 'number') {
+    return true; //boolean
   }
 }
 
 const rtaArray = parseStr('Ange');
-if (Array.isArray(rtaArray)) {
-  rtaArray.reverse();
-}
+rtaArray.reverse();
+// if (Array.isArray(rtaArray)) {
+//   rtaArray.reverse();
+// }
 console.log('Ange =>', rtaArray);
 
 const rtaString = parseStr(['A', 'n', 'g', 'e']);
-if (typeof rtaString === 'string') {
-  rtaString.toLowerCase();
-}
+rtaString.toLowerCase();
+// if (typeof rtaString === 'string') {
+//   rtaString.toLowerCase();
+// }
 console.log("'A', 'n', 'g', 'e'=>", rtaString);
+
+const rtaBoolean = parseStr(16);
+console.log('Number =>', rtaBoolean);
+
