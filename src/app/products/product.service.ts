@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { CreateProductDto, UpdateProductDto } from './product.dto';
+import { CreateProductDto, FindProductDto, UpdateProductDto } from './product.dto';
 import { Product } from './product.model';
 
 export const products: Product[] = [];
@@ -30,4 +30,11 @@ products[index] ={
   ...changes
 }
 return products[index]
+}
+
+export const findProducts = (dto: FindProductDto): Product[] => {
+ //code
+ //como es readonly es decir de solo lectura, no permite modificarlos
+//  dto.color = 'blue'
+  return products
 }
